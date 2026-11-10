@@ -1,8 +1,8 @@
-\# PC Café Network Access Control Implementation
+﻿# PC Café Network Access Control Implementation
 
 
 
-\## Purpose
+## Purpose
 
 
 
@@ -10,17 +10,17 @@ The purpose of this change is to restrict the Guest network from accessing inter
 
 
 
-\## Network Segments
+## Network Segments
 
 
 
-\- Guest: `192.168.0.0/27`
+- Guest: `192.168.0.0/27`
 
-\- Reception: `192.168.0.32/27`
+- Reception: `192.168.0.32/27`
 
-\- Sales: `192.168.0.64/27`
+- Sales: `192.168.0.64/27`
 
-\- Back Office: `192.168.0.96/27`
+- Back Office: `192.168.0.96/27`
 
 
 
@@ -36,9 +36,9 @@ PC6 uses:
 
 
 
-\- IP: `192.168.0.97`
+- IP: `192.168.0.97`
 
-\- Gateway: `192.168.0.126`
+- Gateway: `192.168.0.126`
 
 
 
@@ -46,17 +46,17 @@ The Back Office printer uses:
 
 
 
-\- IP: `192.168.0.98`
+- IP: `192.168.0.98`
 
-\- Gateway: `192.168.0.126`
-
-
-
-\## ACL Configuration
+- Gateway: `192.168.0.126`
 
 
 
-An extended ACL named `GUEST\_RESTRICT` was created.
+## ACL Configuration
+
+
+
+An extended ACL named `GUEST_RESTRICT` was created.
 
 
 
@@ -78,7 +78,7 @@ The ACL was applied inbound on `GigabitEthernet0/0`, the Guest network interface
 
 
 
-\## Before ACL
+## Before ACL
 
 
 
@@ -94,11 +94,11 @@ This demonstrated that Guest devices could communicate with protected internal s
 
 
 
-\## After ACL
+## After ACL
 
 
 
-After applying `GUEST\_RESTRICT`:
+After applying `GUEST_RESTRICT`:
 
 
 
@@ -106,23 +106,23 @@ After applying `GUEST\_RESTRICT`:
 
 |---|---|
 
-| Guest → Reception `192.168.0.34` | Blocked |
+| Guest â†’ Reception `192.168.0.34` | Blocked |
 
-| Guest → Sales `192.168.0.66` | Blocked |
+| Guest â†’ Sales `192.168.0.66` | Blocked |
 
-| Guest → Back Office `192.168.0.97` | Blocked |
+| Guest â†’ Back Office `192.168.0.97` | Blocked |
 
-| Guest → Guest Gateway `192.168.0.1` | Allowed |
+| Guest â†’ Guest Gateway `192.168.0.1` | Allowed |
 
-| Reception → Sales `192.168.0.66` | Allowed |
+| Reception â†’ Sales `192.168.0.66` | Allowed |
 
-| Reception → Back Office `192.168.0.97` | Allowed |
+| Reception â†’ Back Office `192.168.0.97` | Allowed |
 
-| Sales → Back Office `192.168.0.97` | Allowed |
+| Sales â†’ Back Office `192.168.0.97` | Allowed |
 
 
 
-\## ACL Verification
+## ACL Verification
 
 
 
@@ -148,7 +148,7 @@ These counters confirm that the router actively blocked Guest traffic to the thr
 
 
 
-\## Conclusion
+## Conclusion
 
 
 
@@ -165,4 +165,5 @@ The configuration was saved using:
 copy running-config startup-config
 
 ```
+
 
